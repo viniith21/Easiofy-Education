@@ -215,12 +215,27 @@
           ];
           const videoIds = ["Video1", "Video2", "Video3"];
           let currentTargetIndex = 0;
+          let isPlaying = false;
 
           const playVideo = () => {
             const currentTarget = targets[currentTargetIndex];
             const video = document.getElementById(videoIds[currentTargetIndex]);
 
-            video.play();
+            if (
+              currentTarget.components &&
+              currentTarget.components.detector &&
+              currentTarget.components.detector.detected
+            ) {
+              if (!isPlaying) {
+                video.play();
+                isPlaying = true;
+              }
+            } else {
+              if (isPlaying) {
+                video.pause();
+                isPlaying = false;
+              }
+            }
 
             // detect video ended
             video.addEventListener("ended", () => {
@@ -230,22 +245,27 @@
             });
           };
 
-          playVideo(); // Start playing the initial video
+          // Pause video on page load
+          const initialVideo = document.getElementById(
+            videoIds[currentTargetIndex]
+          );
+          initialVideo.pause();
+          isPlaying = false;
 
           targets.forEach((target) => {
             // detect target found
             target.addEventListener("targetFound", (event) => {
-              // Do nothing while the video is playing
-              if (video.paused) {
-                playVideo();
-              }
+              playVideo();
             });
 
             // detect target lost
             target.addEventListener("targetLost", (event) => {
-              // Do nothing while the video is playing
-              if (video.paused) {
+              const video = document.getElementById(
+                videoIds[currentTargetIndex]
+              );
+              if (isPlaying) {
                 video.pause();
+                isPlaying = false;
               }
             });
           });

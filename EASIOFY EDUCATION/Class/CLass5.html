@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script
+      src="https://kit.fontawesome.com/db3f25ecda.js"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <title>Select Subject</title>
+    <link rel="stylesheet" href="../Subjects.css" />
+    <style>
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 40px;
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      .subject-list {
+        list-style: none;
+        padding: 0;
+        margin: 40px 0;
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping on smaller screens */
+        justify-content: space-between;
+      }
+
+      .subject-list li {
+        display: flex;
+        flex-direction: column; /* Show subject name below the box */
+        align-items: center;
+        margin-bottom: 20px;
+        width: calc(33.33% - 20px); /* Adjust box width for responsiveness */
+        max-width: 300px; /* Set a maximum width for the boxes */
+      }
+
+      .subject-list li a {
+        display: flex;
+        flex-direction: column; /* Show subject name below the box */
+        align-items: center;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .subject-list li img {
+        width: 100%;
+        max-width: 200px; /* Set a maximum width for the images */
+        height: auto; /* Maintain aspect ratio */
+        margin-bottom: 10px;
+      }
+
+      .back-button {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        text-decoration: none;
+        color: inherit;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a href="../index.html" class="back-button">
+      <i class="fas fa-circle-arrow-left fa-2x"></i>
+    </a>
+
+    <div class="container">
+      <h1>Select the Subject</h1>
+      <ul class="subject-list">
+        <li>
+          <a href="#">
+            <img src="../Images/Maths.png" alt="Mathematics" />
+            <span>Mathematics</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../Images/Science2.png" alt="Science" />
+            <span>Science</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../Images/English.jfif" alt="English" />
+            <span>English</span>
+          </a>
+        </li>
+        <li>
+          <a href="../Subjects/Hindi2.html">
+            <img src="../Images/Hindi.jfif" alt="Hindi" />
+            <span>Hindi</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>

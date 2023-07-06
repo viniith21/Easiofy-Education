@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+        /* Hamburger Sidebar Styles */
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .sidebar {
+            width: 300px;
+            background-color: #f1f1f1;
+            padding: 20px;
+        }
+
+        .hamburger {
+            display: none;
+        }
+
+        /* Media Query for Responsive Design */
+        @media (max-width: 768px) {
+            .sidebar {
+                display: none;
+            }
+
+            .hamburger {
+                display: block;
+                font-size: 30px;
+                cursor: pointer;
+                padding: 10px;
+            }
+
+            .mobile-sidebar {
+                display: none;
+                width: 300px;
+                background-color: #f1f1f1;
+                padding: 20px;
+                position: fixed;
+                top: 0;
+                right: 0;
+                height: 100%;
+                z-index: 999;
+            }
+
+            .open {
+                display: block;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1>Your Main Content</h1>
+            <p>This is the main content of your webpage.</p>
+        </div>
+
+        <div class="sidebar">
+            <h2>Hamburger Sidebar</h2>
+            <p>This is the attractive and beautiful content that you can display on the right side.</p>
+        </div>
+
+        <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+
+        <div class="mobile-sidebar" id="mobileSidebar">
+            <h2>Hamburger Sidebar</h2>
+            <p>This is the attractive and beautiful content that you can display on the right side.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to toggle the mobile sidebar
+        function toggleSidebar() {
+            var sidebar = document.getElementById("mobileSidebar");
+            sidebar.classList.toggle("open");
+        }
+    </script>
+</body>
+
+</html>

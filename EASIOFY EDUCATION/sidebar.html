@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      .container {
+        display: flex;
+      }
+
+      .sidebar {
+        width: 280px;
+        background-color: #333;
+        color: #fff;
+        overflow: hidden;
+        transition: 0.3s;
+      }
+
+      .hamburger {
+        cursor: pointer;
+        padding: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .hamburger span {
+        width: 30px;
+        height: 4px;
+        background-color: #fff;
+        margin: 4px 0;
+      }
+
+      .menu {
+        padding: 20px;
+      }
+
+      .menu ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu ul li {
+        margin-bottom: 10px;
+      }
+
+      .menu ul li a {
+        color: #fff;
+        text-decoration: none;
+      }
+
+      .content {
+        flex: 1;
+        padding: 20px;
+      }
+
+      @media (max-width: 768px) {
+        .sidebar {
+          width: 0;
+        }
+
+        .content {
+          flex: none;
+        }
+
+        .sidebar.open {
+          width: 280px;
+        }
+      }
+    </style>
+    <script>
+      function toggleSidebar() {
+        const sidebar = document.querySelector(".sidebar");
+        sidebar.classList.toggle("open");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sidebar">
+        <div class="hamburger" onclick="toggleSidebar()">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <nav class="menu">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="content">
+        <!-- Your page content goes here -->
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,256 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+    <title>Scan the Image</title>
+  </head>
+
+  <body>
+    <a-scene
+      mindar-image="imageTargetSrc:targets.mind; maxTrack: 25"
+      color-space="sRGB"
+      renderer="colorManagement: true; physicallyCorrectLights: true"
+      vr-mode-ui="enabled: false"
+      device-orientation-permission-ui="enabled: false"
+    >
+      <a-assets>
+        <a-asset-item id="Bunny" src="./Gltf/hut.gltf"></a-asset-item>
+        <a-asset-item id="Chunny" src="./Gltf/HELI.gltf"></a-asset-item>
+        <a-asset-item id="hut" src="./Gltf/hut.gltf"></a-asset-item>
+        <a-asset-item id="bus" src="./Gltf/bus.gltf"></a-asset-item>
+        <a-asset-item id="building" src="./Gltf/building.gltf"></a-asset-item>
+        <a-asset-item id="bathtub" src="./Gltf/bathtub.gltf"></a-asset-item>
+        <a-asset-item id="car" src="./Gltf/car.gltf"></a-asset-item>
+        <a-asset-item id="cow" src="./Gltf/bus.gltf"></a-asset-item>
+        <a-asset-item id="Tunger" src="./Gltf/hut.gltf"></a-asset-item>
+        <a-asset-item id="Pow" src="./Gltf/HELI.gltf"></a-asset-item>
+        <a-asset-item id="Put" src="./Gltf/bathtub.gltf"></a-asset-item>
+        <a-asset-item id="Low" src="./Gltf/hut.gltf"></a-asset-item>
+        <a-asset-item id="Kite" src="./Gltf/building.gltf"></a-asset-item>
+        <a-asset-item id="Nest" src="./Gltf/bathtub.gltf"></a-asset-item>
+        <a-asset-item id="Test" src="./Gltf/bus.gltf"></a-asset-item>
+        <a-asset-item id="Lichi" src="./Gltf/car.gltf"></a-asset-item>
+        <video id="Video1" src="./Video/CHAP3.mp4" preload loop></video>
+        <video id="Video2" src="./Video/CHAP2.mp4" preload loop></video>
+        <video id="Video3" src="./Video/CHAP4.mp4" preload loop></video>
+        <video id="Video7" src="./Video/CHAP7.mp4" preload loop></video>
+      </a-assets>
+
+      <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+      <a-entity mindar-image-target="targetIndex: 0" id="target">
+        <a-plane
+          class="clickable"
+          material="src: #Video2; transparent: true"
+          video-controller
+        >
+        </a-plane>
+      </a-entity>
+      <a-entity mindar-image-target="targetIndex: 1" id="target1">
+        <a-plane
+          class="clickable"
+          material="src: #Video1; transparent: true"
+          video-controller
+        >
+        </a-plane>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 2" id="target2">
+        <a-plane
+          class="clickable"
+          material="src: #Video3; transparent: true"
+          video-controller
+        >
+        </a-plane>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 3">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.02 0.02 0.02"
+          src="#bus"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 4">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.02 0.02 0.02"
+          src="#building"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 5">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.1 0.1 0.1"
+          src="#bathtub"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 6" id="target6">
+        <a-plane
+          class="clickable"
+          material="src: #Video7; transparent: true"
+          video-controller
+        >
+        </a-plane>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 7">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.02 0.02 0.02"
+          src="#cow"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 8">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.2 0.2 0.2"
+          src="#Tunger"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 9">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.1 0.1 0.1"
+          src="#Pow"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 10">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.2 0.2 0.2"
+          src="#Put"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 11">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.2 0.2 0.2"
+          src="#Low"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 12">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.1 0.1 0.1"
+          src="#Kite"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 13">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.1 0.1 0.1"
+          src="#Nest"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 14">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.02 0.02 0.02"
+          src="#Test"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 15">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.05 0.05 0.05"
+          src="#Bunny"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+
+      <a-entity mindar-image-target="targetIndex: 16">
+        <a-gltf-model
+          rotation="0 0 0"
+          position="0 -0.25 0"
+          scale="0.2 0.2 0.2"
+          src="#Lichi"
+          animation-mixer
+        ></a-gltf-model>
+      </a-entity>
+    </a-scene>
+    <script>
+      AFRAME.registerComponent("video-controller", {
+        init: function () {
+          const targets = [
+            document.getElementById("target"),
+            document.getElementById("target1"),
+            document.getElementById("target2"),
+          ];
+          const videoIds = ["Video1", "Video2", "Video3"];
+          let currentTargetIndex = 0;
+
+          const playVideo = () => {
+            const currentTarget = targets[currentTargetIndex];
+            const video = document.getElementById(videoIds[currentTargetIndex]);
+
+            video.play();
+
+            // detect video ended
+            video.addEventListener("ended", () => {
+              video.currentTime = 0; // Reset video to the beginning
+              currentTargetIndex = (currentTargetIndex + 1) % targets.length; // Move to the next target
+              playVideo(); // Start playing the video for the new target
+            });
+          };
+
+          playVideo(); // Start playing the initial video
+
+          targets.forEach((target) => {
+            // detect target found
+            target.addEventListener("targetFound", (event) => {
+              // Do nothing while the video is playing
+              if (video.paused) {
+                playVideo();
+              }
+            });
+
+            // detect target lost
+            target.addEventListener("targetLost", (event) => {
+              // Do nothing while the video is playing
+              if (video.paused) {
+                video.pause();
+              }
+            });
+          });
+        },
+      });
+    </script>
+  </body>
+</html>

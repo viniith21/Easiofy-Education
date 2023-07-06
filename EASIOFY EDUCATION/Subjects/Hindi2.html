@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SELECT THE CHAPTERS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #303f9f;
+            color: #fff;
+            overflow: hidden;
+            transition: width 0.3s;
+        }
+
+        .sidebar:hover {
+            width: 250px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .sidebar li {
+            position: relative;
+        }
+
+        .sidebar li a {
+            display: block;
+            padding: 10px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar li a:hover {
+            background-color: #3f51b5;
+        }
+
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .chapter {
+            display: none;
+            margin-top: 20px;
+        }
+
+        .chapter.active {
+            display: block;
+        }
+
+        /* Additional Styles */
+
+        h2 {
+            color: #303f9f;
+            margin-bottom: 10px;
+        }
+
+        p {
+            line-height: 1.5;
+        }
+
+        .sidebar li:last-child {
+            margin-top: auto;
+        }
+
+        .sidebar a.back-link {
+            padding: 10px;
+            font-size: 14px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a.back-link:hover {
+            background-color: #3f51b5;
+        }
+    </style>
+    <script>
+        function showContent(contentId) {
+            var contents = document.getElementsByClassName("chapter");
+            for (var i = 0; i < contents.length; i++) {
+                contents[i].classList.remove("active");
+            }
+            document.getElementById(contentId).classList.add("active");
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <ul>
+                <li><a onclick="showContent('chapter1')">Chapter 1</a></li>
+                <li><a onclick="showContent('chapter2')">Chapter 2</a></li>
+                <li><a onclick="showContent('chapter3')">Chapter 3</a></li>
+                <li><a href="../Home.html" class="back-link">Back To Home Page</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div id="chapter1" class="chapter active">
+                <h2>Lesson 1</h2>
+                <p>HELLO, WELCOME TO EASIOFY SOLUTIONS</p>
+            </div>
+            <div id="chapter2" class="chapter">
+                <h2>Lesson 2</h2>
+                <p>This is the content of Chapter 2.</p>
+            </div>
+            <div id="chapter3" class="chapter">
+                <h2>Lesson 3</h2>
+                <p>This is the content of Chapter 3.</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://kit.fontawesome.com/db3f25ecda.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>पर्यावरण अध्ययन-आसपास</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+
+      body {
+        font-family: "Inter", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        height: 100vh;
+      }
+
+      .sidebar {
+        position: absolute;
+        width: 300px; /* Adjust the width as desired */
+        height: 100vh;
+        background: #312450;
+        font-size: 0.65em;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        overflow-y: scroll;
+        transition: all 0.3s ease;
+      }
+
+      .nav {
+        position: relative;
+        text-align: center;
+        width: 100%;
+        /* transform: translateY(-50%); */
+        font-weight: bold;
+      }
+
+      .nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .nav ul li {
+        position: relative;
+        margin: 1rem 0;
+      }
+
+      .nav ul li a {
+        text-transform: uppercase;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.35);
+        display: block;
+        transition: all ease-out 300ms;
+        font-size: 1.2rem;
+      }
+
+      .nav ul li.active a {
+        color: white;
+      }
+
+      .nav ul li:not(.active)::after {
+        opacity: 0.2;
+      }
+
+      .nav ul li:not(.active):hover a {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .nav ul li::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0.2em;
+        background: white;
+        bottom: -1.3em;
+        left: 0;
+        opacity: 0;
+        transition: all ease-out 300ms;
+      }
+
+      .nav ul li.active::after,
+      .nav ul li:hover::after {
+        opacity: 0.8;
+      }
+
+      .content {
+        position: relative;
+        width: 75%;
+        background: white;
+        overflow-y: auto;
+        padding-left: 3rem;
+      }
+
+      .chapter {
+        display: none;
+      }
+
+      .chapter.active {
+        display: block;
+      }
+
+      .chapter img {
+        width: 30%;
+        /* height: auto; 
+        max-height: 80rem; */
+      }
+
+      #sidebar-toggle {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        z-index: 999;
+        background-color: #ffffff;
+        color: #000000;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        white-space: nowrap;
+        overflow: visible;
+      }
+
+      #sidebar-toggle:hover {
+        background-color: #e0e0e0;
+      }
+
+      .try-it-out-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3f51b5;
+        color: #fff;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
+      }
+      @media (max-width: 767px) {
+        .container {
+          flex-direction: column;
+        }
+
+        .sidebar {
+          order: -1;
+          width: 100%;
+          height: auto;
+          min-height: 100px;
+          transition: none;
+        }
+
+        .content {
+          order: 1;
+          padding: 2rem;
+        }
+
+        .chapter img {
+          width: 100%;
+          height: auto;
+        }
+      }
+    </style>
+    <script>
+      function showContent(contentId) {
+        var contents = document.getElementsByClassName("chapter");
+        for (var i = 0; i < contents.length; i++) {
+          contents[i].classList.remove("active");
+        }
+        document.getElementById(contentId).classList.add("active");
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <button
+        id="sidebar-toggle"
+        onclick="toggleSidebar()"
+        aria-expanded="false"
+      >
+        <i id="sidebar-icon" class="fa-solid fa-bars"></i>
+      </button>
+
+      <br /><br />
+      <div class="sidebar">
+        <div class="nav">
+          <ul>
+            <li>
+              <a href="#" onclick="showContent('chapter1')">अध्याय 1</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter2')">अध्याय 2</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter3')">अध्याय 3</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter4')">अध्याय 4</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter5')">अध्याय 5</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter6')">अध्याय 6</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter7')">अध्याय 7</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter8')">अध्याय 8</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter9')">अध्याय 9</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter10')">अध्याय 10</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter11')">अध्याय 11</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter12')">अध्याय 12</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter13')">अध्याय 13</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter14')">अध्याय 14</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter15')">अध्याय 15</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter16')">अध्याय 16</a>
+            </li>
+
+            <!-- Add more chapters as needed -->
+            <li>
+              <a href="../Hindi/Kaksha6.html" class="back-link">
+                <i
+                  class="fa-solid fa-arrow-left fa-lg"
+                  style="color: #ffffff"
+                ></i>
+                <span>पीछे जाओ</span>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html" class="back-link"> मुखपृष्ठ पर वापस </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="content">
+        <div id="chapter1" class="chapter active">
+          <h2>अध्याय 1:-भोजन: यह कहाँ से आता है?</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap1.jpg" alt="Scan Image 1" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter2" class="chapter">
+          <h2>अध्याय 2:-भोजन के घटक</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap2.jpg" alt="Scan Image 2" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter3" class="chapter">
+          <h2>अध्याय 3:-तंतु से वस्त्र तक</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap3.jpg" alt="Scan Image 3" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter4" class="chapter">
+          <h2>अध्याय 4:-वास्तुओं के समूह बनाना</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap4.jpg" alt="Scan Image 4" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter5" class="chapter">
+          <h2>अध्याय 5:-पदार्थो का पृथक्करण</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap5.jpg" alt="Scan Image 5" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter6" class="chapter">
+          <h2>अध्याय 6:-हमारे चारो और के परिवर्तन</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap6.jpg" alt="Scan Image 6" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter7" class="chapter">
+          <h2>अध्याय 7:-पोधों को जानिए</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap7.jpg" alt="Scan Image 7" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter8" class="chapter">
+          <h2>अध्याय 8:-शरीर में गति</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap8.jpg" alt="Scan Image 8" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+
+        <div id="chapter9" class="chapter">
+          <h2>अध्याय 9:सजीव-विशेषताएँ एवं आवास</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap9.jpg" alt="Scan Image 9" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter10" class="chapter">
+          <h2>अध्याय 10:- गति एवं दूरियों का मापन</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap10.jpg" alt="Scan Image 10" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter11" class="chapter">
+          <h2>अध्याय 11:-प्रकाश छायाएँ एवं परावर्तन</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap11.jpg" alt="Scan Image 11" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter12" class="chapter">
+          <h2>अध्याय 12:-विद्युत् तथा परिपथ</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap12.jpg" alt="Scan Image 12" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter13" class="chapter">
+          <h2>अध्याय 13:-चुंबकों द्वारा मनोरंजन</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap13.jpg" alt="Scan Image 13" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter14" class="chapter">
+          <h2>अध्याय 14:-जल</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap14.jpg" alt="Scan Image 14" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter15" class="chapter">
+          <h2>अध्याय 15:-हमारे चारों ओर वायु</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap15.jpg" alt="Scan Image 15" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <div id="chapter16" class="chapter">
+          <h2>अध्याय 16:-कचरा संग्रहण एवं निपटान</h2>
+          <div class="image-placeholder">
+            <img src="../Target Images/Chap16.jpg" alt="Scan Image 16" />
+          </div>
+          <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
+          <p></p>
+          <a href="../Scan.html" class="try-it-out-button">इसे अजमा कर देखो</a>
+        </div>
+        <!-- Add more chapters as needed -->
+      </div>
+    </div>
+
+    <script>
+      let content = document.querySelector(".content");
+
+      (function () {
+        content.style.marginLeft = "270px";
+      })();
+
+      function toggleSidebar() {
+        var sidebar = document.querySelector(".sidebar");
+        var sidebarToggle = document.getElementById("sidebar-toggle");
+        var sidebarIcon = document.getElementById("sidebar-icon");
+
+        if (sidebar.style.display === "none") {
+          sidebar.style.display = "block";
+          content.style.marginLeft = "270px";
+          sidebarToggle.setAttribute("aria-expanded", "true");
+          sidebarIcon.classList.replace("fa-bars", "fa-times");
+        } else {
+          sidebar.style.display = "none";
+          content.style.marginLeft = "0";
+          sidebarToggle.setAttribute("aria-expanded", "false");
+          sidebarIcon.classList.replace("fa-times", "fa-bars");
+        }
+      }
+
+      // Add event listener to close the sidebar when content is clicked
+      content.addEventListener("click", function () {
+        var sidebar = document.querySelector(".sidebar");
+        var sidebarToggle = document.getElementById("sidebar-toggle");
+        var sidebarIcon = document.getElementById("sidebar-icon");
+
+        if (sidebar.style.display === "block") {
+          sidebar.style.display = "none";
+          content.style.marginLeft = "0";
+          sidebarToggle.setAttribute("aria-expanded", "false");
+          sidebarIcon.classList.replace("fa-times", "fa-bars");
+        }
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.querySelector(".sidebar");
+        const chapters = document.querySelectorAll(".chapter");
+
+        chapters.forEach(function (chapter) {
+          chapter.addEventListener("click", function () {
+            if (window.innerWidth <= 767) {
+              sidebar.classList.remove("open");
+            }
+          });
+        });
+
+        const toggleButton = document.querySelector(".toggle-button");
+
+        toggleButton.addEventListener("click", function () {
+          sidebar.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>

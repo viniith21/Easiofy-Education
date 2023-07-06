@@ -1,0 +1,148 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap");
+body {
+  background-color: #f3f3f3;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  background-color: inherit;
+}
+
+.container {
+  text-align: center;
+}
+
+.subject-list {
+  list-style: none;
+  padding: 0;
+}
+
+.subject-list li {
+  display: inline-block;
+  margin: 10px;
+  position: relative;
+}
+
+.subject-list li a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.3s ease;
+}
+
+.subject-list li span {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
+
+.subject-list li:hover span {
+  z-index: 1;
+}
+
+.subject-list li img {
+  width: 120px;
+  height: 120px;
+  border-radius: 0;
+  border: 2px solid #333;
+}
+
+.subject-list li a img.science {
+  /* scale: 1.5; */
+  margin-top: 50px;
+}
+
+.subject-list li a img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+.subject-list li a::after {
+  content: "क्लिक करें";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: blue;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  background-color: yellow;
+  padding: 8px 16px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.subject-list li a:hover::after {
+  opacity: 0.9;
+}
+
+/* Apply scale transformation on hover */
+.subject-list li a:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive Styles */
+
+@media only screen and (max-width: 600px) {
+  .subject-list li {
+    margin-right: 5px;
+  }
+
+  .subject-list li a span {
+    margin-top: 5px;
+
+    bottom: -28px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .subject-list li {
+    margin-right: 2px;
+  }
+
+  .subject-list li a span {
+    margin-top: 3px;
+
+    bottom: -24px;
+  }
+}
+.back-button {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.3s ease-in-out;
+  text-decoration: none; /* Added line */
+  border: none; /* Added line */
+  /* background-color: transparent;  */
+}
+
+.back-button:hover {
+  transform: scale(1.2);
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  /* background: red !important; */
+}
+.back-button i {
+  color: rgb(20 184 166);
+}

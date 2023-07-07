@@ -16,7 +16,7 @@
       device-orientation-permission-ui="enabled: false"
     >
       <a-assets>
-        <a-asset-item id="balloon" src="./Gltf/Balloon.gltf"></a-asset-item>
+        <a-asset-item id="balloon" src="./Gltf/Red Balloon.glb"></a-asset-item>
         <video id="Video2" src="./Video/CHAP2.mp4" preload loop></video>
         <video id="Video3" src="./Video/CHAP3.mp4" preload loop></video>
         <video id="Video4" src="./Video/CHAP4.mp4" preload loop></video>
@@ -26,6 +26,7 @@
         <video id="Video10" src="./Video/CHAP10.mp4" preload loop></video>
         <video id="Video12" src="./Video/CHAP12.mp4" preload loop></video>
         <video id="Video13" src="./Video/CHAP13.mp4" preload loop></video>
+        <video id="Video14" src="./Video/CHAP14.mp4" preload loop></video>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -200,6 +201,7 @@
             document.getElementById("target10"),
             document.getElementById("target12"),
             document.getElementById("target13"),
+            document.getElementById("target14"),
           ];
           const videoIds = [
             "Video2",
@@ -211,6 +213,7 @@
             "Video10",
             "Video12",
             "Video13",
+            "Video14",
           ];
 
           videoIds.forEach((id, index) => {

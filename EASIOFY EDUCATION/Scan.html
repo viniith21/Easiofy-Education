@@ -191,11 +191,27 @@
       AFRAME.registerComponent("video-controller", {
         init: function () {
           const targets = [
-            document.getElementById("target"),
-            document.getElementById("target1"),
             document.getElementById("target2"),
+            document.getElementById("target3"),
+            document.getElementById("target4"),
+            document.getElementById("target7"),
+            document.getElementById("target8"),
+            document.getElementById("target9"),
+            document.getElementById("target10"),
+            document.getElementById("target12"),
+            document.getElementById("target13"),
           ];
-          const videoIds = ["Video1", "Video2", "Video3"];
+          const videoIds = [
+            "Video2",
+            "Video3",
+            "Video4",
+            "Video7",
+            "Video8",
+            "Video9",
+            "Video10",
+            "Video12",
+            "Video13",
+          ];
 
           videoIds.forEach((id, index) => {
             const video = document.getElementById(id);

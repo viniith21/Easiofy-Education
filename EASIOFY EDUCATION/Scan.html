@@ -16,7 +16,8 @@
       device-orientation-permission-ui="enabled: false"
     >
       <a-assets>
-        <a-asset-item id="balloon" src="./Gltf/Red Balloon.gltf"></a-asset-item>
+        <a-asset-item id="six" src="./Gltf/Red Balloon.gltf"></a-asset-item>
+        <a-asset-item id="five" src="./Gltf/bathtub.gltf"></a-asset-item>
         <video id="Video2" src="./Video/CHAP2.mp4" preload loop></video>
         <video id="Video3" src="./Video/CHAP3.mp4" preload loop></video>
         <video id="Video4" src="./Video/CHAP4.mp4" preload loop></video>
@@ -27,6 +28,8 @@
         <video id="Video12" src="./Video/CHAP12.mp4" preload loop></video>
         <video id="Video13" src="./Video/CHAP13.mp4" preload loop></video>
         <video id="Video14" src="./Video/CHAP14.mp4" preload loop></video>
+        <video id="Video15" src="./Video/CHAP15.mp4" preload loop></video>
+        <video id="Video16" src="./Video/CHAP16.mp4" preload loop></video>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
@@ -62,7 +65,7 @@
           rotation="0 0 0"
           position="0 -0.25 0"
           scale="0.02 0.02 0.02"
-          src="#bus"
+          src="#five"
           animation-mixer
         ></a-gltf-model>
       </a-entity>
@@ -72,7 +75,7 @@
           rotation="0 0 0"
           position="0 -0.25 0"
           scale="0.02 0.02 0.02"
-          src="#balloon"
+          src="#six"
           animation-mixer
         ></a-gltf-model>
       </a-entity>
@@ -167,26 +170,6 @@
         >
         </a-plane>
       </a-entity>
-
-      <!-- <a-entity mindar-image-target="targetIndex: 15">
-        <a-gltf-model
-          rotation="0 0 0"
-          position="0 -0.25 0"
-          scale="0.05 0.05 0.05"
-          src="#Bunny"
-          animation-mixer
-        ></a-gltf-model>
-      </a-entity>
-
-      <a-entity mindar-image-target="targetIndex: 16">
-        <a-gltf-model
-          rotation="0 0 0"
-          position="0 -0.25 0"
-          scale="0.2 0.2 0.2"
-          src="#Lichi"
-          animation-mixer
-        ></a-gltf-model>
-      </a-entity> -->
     </a-scene>
     <script>
       AFRAME.registerComponent("video-controller", {
@@ -202,6 +185,8 @@
             document.getElementById("target12"),
             document.getElementById("target13"),
             document.getElementById("target14"),
+            document.getElementById("target15"),
+            document.getElementById("target16"),
           ];
           const videoIds = [
             "Video2",
@@ -214,6 +199,8 @@
             "Video12",
             "Video13",
             "Video14",
+            "Video15",
+            "Video16",
           ];
 
           videoIds.forEach((id, index) => {

@@ -10,8 +10,10 @@
     ></script>
     <title>पर्यावरण अध्ययन-आसपास</title>
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap");
+
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Inter", sans-serif;
         margin: 0;
         padding: 0;
       }
@@ -22,137 +24,101 @@
       }
 
       .sidebar {
-        width: 200px;
-        background-color: #303f9f;
-        color: #fff;
-        overflow: auto;
-        /* Add overflow property */
-        transition: width 0.3s;
+        position: absolute;
+        width: 300px; /* Adjust the width as desired */
+        height: 100vh;
+        background: #312450;
+        font-size: 0.65em;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        overflow-y: scroll;
+        transition: all 0.3s ease;
       }
 
-      .sidebar:hover {
-        width: 250px;
-      }
-
-      .sidebar ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 0;
-        margin-top: 3rem;
-      }
-
-      .sidebar li {
+      .nav {
         position: relative;
+        text-align: center;
+        width: 100%;
+        /* transform: translateY(-50%); */
+        font-weight: bold;
       }
 
-      .sidebar li a {
-        display: block;
-        padding: 10px;
-        color: #fff;
+      .nav ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .nav ul li {
+        position: relative;
+        margin: 1rem 0;
+      }
+
+      .nav ul li a {
+        text-transform: uppercase;
         text-decoration: none;
-        transition: background-color 0.3s;
+        color: rgba(255, 255, 255, 0.35);
+        display: block;
+        transition: all ease-out 300ms;
+        font-size: 1.2rem;
       }
 
-      .sidebar li a:hover {
-        background-color: #3f51b5;
+      .nav ul li.active a {
+        color: white;
+      }
+
+      .nav ul li:not(.active)::after {
+        opacity: 0.2;
+      }
+
+      .nav ul li:not(.active):hover a {
+        color: rgba(255, 255, 255, 0.75);
+      }
+
+      .nav ul li::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 0.2em;
+        background: white;
+        bottom: -1.3em;
+        left: 0;
+        opacity: 0;
+        transition: all ease-out 300ms;
+      }
+
+      .nav ul li.active::after,
+      .nav ul li:hover::after {
+        opacity: 0.8;
       }
 
       .content {
-        flex-grow: 1;
-        padding: 20px;
+        position: relative;
+        width: 75%;
+        background: white;
+        overflow-y: auto;
+        padding-left: 3rem;
       }
 
       .chapter {
         display: none;
-        margin-top: 20px;
       }
 
       .chapter.active {
         display: block;
       }
 
-      /* Additional Styles */
-
-      h2 {
-        color: #303f9f;
-        margin-bottom: 10px;
-      }
-
-      p {
-        line-height: 1.5;
-      }
-
-      .sidebar li:last-child {
-        margin-top: auto;
-      }
-
-      .sidebar a.back-link {
-        padding: 10px;
-        font-size: 14px;
-        color: #fff;
-        text-decoration: none;
-        transition: background-color 0.3s;
-      }
-
-      .sidebar a.back-link:hover {
-        background-color: #3f51b5;
-      }
-
-      .image-placeholder {
-        width: 100%;
-        max-width: 300px;
-        height: auto;
-        background-color: #f1f1f1;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* Add border styles */
-        border: 2px solid #303f9f;
-        border-radius: 4px;
-        padding: 10px;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-      }
-
-      .image-placeholder img {
-        max-width: 100%;
-        max-height: 100%;
-      }
-
-      .scan-image-headline {
-        color: #303f9f;
-        margin-bottom: 10px;
-      }
-
-      .try-it-out-button {
-        display: inline-block;
-        padding: 10px 20px;
-        background-color: #3f51b5;
-        color: #fff;
-        text-decoration: none;
-        border-radius: 4px;
-        transition: background-color 0.3s;
-      }
-
-      .try-it-out-button:hover {
-        background-color: #303f9f;
-      }
-
-      /* Added styles for arrow alignment */
-
-      .sidebar li a {
-        display: flex;
-        align-items: center;
-      }
-
-      .sidebar li a i {
-        margin-right: 5px;
+      .chapter img {
+        width: 30%;
+        /* height: auto; 
+        max-height: 80rem; */
       }
 
       #sidebar-toggle {
-        position: absolute;
+        position: fixed;
         top: 10px;
-        left: 10px;
-        z-index: 2;
+        right: 10px;
+        z-index: 999;
         background-color: #ffffff;
         color: #000000;
         border: none;
@@ -167,22 +133,37 @@
         background-color: #e0e0e0;
       }
 
-      .sidebar {
-        width: 0;
-        background-color: #303f9f;
+      .try-it-out-button {
+        display: inline-block;
+        padding: 10px 20px;
+        background-color: #3f51b5;
         color: #fff;
-        overflow: auto;
-        transition: width 0.3s;
-        position: relative;
-        z-index: 1;
+        text-decoration: none;
+        border-radius: 4px;
+        transition: background-color 0.3s;
       }
+      @media (max-width: 767px) {
+        .container {
+          flex-direction: column;
+        }
 
-      .sidebar.active {
-        width: 250px;
-      }
+        .sidebar {
+          order: -1;
+          width: 100%;
+          height: auto;
+          min-height: 100px;
+          transition: none;
+        }
 
-      .sidebar:hover {
-        width: 250px;
+        .content {
+          order: 1;
+          padding: 2rem;
+        }
+
+        .chapter img {
+          width: 100%;
+          height: auto;
+        }
       }
     </style>
     <script>
@@ -195,53 +176,90 @@
       }
     </script>
   </head>
-
   <body>
     <div class="container">
-      <button id="sidebar-toggle" onclick="toggleSidebar()">
+      <button
+        id="sidebar-toggle"
+        onclick="toggleSidebar()"
+        aria-expanded="false"
+      >
         <i id="sidebar-icon" class="fa-solid fa-bars"></i>
       </button>
 
       <br /><br />
-      <div class="sidebar" id="sidebar">
-        <ul>
-          <li><a href="#" onclick="showContent('chapter1')">अध्याय 1</a></li>
-          <li><a href="#" onclick="showContent('chapter2')">अध्याय 2</a></li>
-          <li><a href="#" onclick="showContent('chapter3')">अध्याय 3</a></li>
-          <li><a href="#" onclick="showContent('chapter4')">अध्याय 4</a></li>
-          <li><a href="#" onclick="showContent('chapter5')">अध्याय 5</a></li>
-          <li><a href="#" onclick="showContent('chapter6')">अध्याय 6</a></li>
-          <li><a href="#" onclick="showContent('chapter7')">अध्याय 7</a></li>
-          <li><a href="#" onclick="showContent('chapter8')">अध्याय 8</a></li>
-          <li><a href="#" onclick="showContent('chapter9')">अध्याय 9</a></li>
-          <li><a href="#" onclick="showContent('chapter10')">अध्याय 10</a></li>
-          <li><a href="#" onclick="showContent('chapter11')">अध्याय 11</a></li>
-          <li><a href="#" onclick="showContent('chapter12')">अध्याय 12</a></li>
-          <li><a href="#" onclick="showContent('chapter13')">अध्याय 13</a></li>
-          <li><a href="#" onclick="showContent('chapter14')">अध्याय 14</a></li>
-          <li><a href="#" onclick="showContent('chapter15')">अध्याय 15</a></li>
-          <li><a href="#" onclick="showContent('chapter16')">अध्याय 16</a></li>
+      <div class="sidebar">
+        <div class="nav">
+          <ul>
+            <li>
+              <a href="#" onclick="showContent('chapter1')">अध्याय 1</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter2')">अध्याय 2</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter3')">अध्याय 3</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter4')">अध्याय 4</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter5')">अध्याय 5</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter6')">अध्याय 6</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter7')">अध्याय 7</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter8')">अध्याय 8</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter9')">अध्याय 9</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter10')">अध्याय 10</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter11')">अध्याय 11</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter12')">अध्याय 12</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter13')">अध्याय 13</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter14')">अध्याय 14</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter15')">अध्याय 15</a>
+            </li>
+            <li>
+              <a href="#" onclick="showContent('chapter16')">अध्याय 16</a>
+            </li>
 
-          <!-- Add more chapters as needed -->
-          <li>
-            <a href="../Hindi/Kaksha6.html" class="back-link">
-              <i
-                class="fa-solid fa-arrow-left fa-lg"
-                style="color: #ffffff"
-              ></i>
-              <span>पीछे जाओ</span>
-            </a>
-          </li>
-          <li>
-            <a href="../index.html" class="back-link"> मुखपृष्ठ पर वापस </a>
-          </li>
-        </ul>
+            <!-- Add more chapters as needed -->
+            <li>
+              <a href="../Hindi/Kaksha6.html" class="back-link">
+                <i
+                  class="fa-solid fa-arrow-left fa-lg"
+                  style="color: #ffffff"
+                ></i>
+                <span>पीछे जाओ</span>
+              </a>
+            </li>
+            <li>
+              <a href="../index.html" class="back-link"> मुखपृष्ठ पर वापस </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <div class="content">
         <div id="chapter1" class="chapter active">
           <h2>अध्याय 1:-भोजन: यह कहाँ से आता है?</h2>
           <div class="image-placeholder">
-            <img src="../Target Images/Chap1.jpg" alt="Scan Image 1" />
+            <img src="../Target Images/Chap1.png" alt="Scan Image 1" />
           </div>
           <h3 class="scan-image-headline">इस छवि को पुस्तक से Scan करें</h3>
           <p></p>
@@ -386,32 +404,63 @@
         <!-- Add more chapters as needed -->
       </div>
     </div>
+
     <script>
+      let content = document.querySelector(".content");
+
+      (function () {
+        content.style.marginLeft = "270px";
+      })();
+
       function toggleSidebar() {
-        var sidebar = document.getElementById("sidebar");
-        sidebar.classList.toggle("active");
+        var sidebar = document.querySelector(".sidebar");
+        var sidebarToggle = document.getElementById("sidebar-toggle");
+        var sidebarIcon = document.getElementById("sidebar-icon");
 
-        var icon = document.getElementById("sidebar-icon");
-        if (sidebar.classList.contains("active")) {
-          icon.classList.remove("fa-bars");
-          icon.classList.add("fa-x");
-          document.getElementById("sidebar-toggle").style.backgroundColor =
-            "transparent";
-          icon.style.color = "white";
+        if (sidebar.style.display === "none") {
+          sidebar.style.display = "block";
+          content.style.marginLeft = "270px";
+          sidebarToggle.setAttribute("aria-expanded", "true");
+          sidebarIcon.classList.replace("fa-bars", "fa-times");
         } else {
-          icon.classList.remove("fa-x");
-          icon.classList.add("fa-bars");
-          icon.style.color = "black";
+          sidebar.style.display = "none";
+          content.style.marginLeft = "0";
+          sidebarToggle.setAttribute("aria-expanded", "false");
+          sidebarIcon.classList.replace("fa-times", "fa-bars");
         }
       }
 
-      function showContent(contentId) {
-        var contents = document.getElementsByClassName("chapter");
-        for (var i = 0; i < contents.length; i++) {
-          contents[i].classList.remove("active");
+      // Add event listener to close the sidebar when content is clicked
+      content.addEventListener("click", function () {
+        var sidebar = document.querySelector(".sidebar");
+        var sidebarToggle = document.getElementById("sidebar-toggle");
+        var sidebarIcon = document.getElementById("sidebar-icon");
+
+        if (sidebar.style.display === "block") {
+          sidebar.style.display = "none";
+          content.style.marginLeft = "0";
+          sidebarToggle.setAttribute("aria-expanded", "false");
+          sidebarIcon.classList.replace("fa-times", "fa-bars");
         }
-        document.getElementById(contentId).classList.add("active");
-      }
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+        const sidebar = document.querySelector(".sidebar");
+        const chapters = document.querySelectorAll(".chapter");
+
+        chapters.forEach(function (chapter) {
+          chapter.addEventListener("click", function () {
+            if (window.innerWidth <= 767) {
+              sidebar.classList.remove("open");
+            }
+          });
+        });
+
+        const toggleButton = document.querySelector(".toggle-button");
+
+        toggleButton.addEventListener("click", function () {
+          sidebar.classList.toggle("open");
+        });
+      });
     </script>
   </body>
 </html>

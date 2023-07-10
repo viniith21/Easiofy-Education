@@ -18,6 +18,7 @@
       <a-assets>
         <a-asset-item id="plant" src="./Gltf/Plant1.gltf"></a-asset-item>
         <a-asset-item id="Skeleton" src="./Gltf/skeleton.gltf"></a-asset-item>
+        <a-asset-item id="camel" src="./Gltf/camel+text.gltf"></a-asset-item>
         <video id="Video1" src="./Video/CHAP1.mp4" preload loop></video>
         <video id="Video2" src="./Video/CHAP2.mp4" preload loop></video>
         <video id="Video3" src="./Video/CHAP3.mp4" preload loop></video>
@@ -136,7 +137,14 @@
         </a-plane>
       </a-entity>
 
-      <a-entity mindar-image-target="targetIndex: 11" id="target10">
+
+      <a-entity mindar-image-target="targetIndex: 11">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#camel"
+        animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
+      </a-entity>
+
+
+      <a-entity mindar-image-target="targetIndex: 12" id="target10">
         <a-plane
           class="clickable"
           material="src: #Video10; transparent: true"
@@ -146,7 +154,7 @@
       </a-entity>
 
 
-      <a-entity mindar-image-target="targetIndex: 12" id="target11">
+      <a-entity mindar-image-target="targetIndex: 13" id="target11">
         <a-plane
           class="clickable"
           material="src: #Video11; transparent: true"
@@ -156,7 +164,7 @@
       </a-entity>
 
 
-      <a-entity mindar-image-target="targetIndex: 13" id="target12">
+      <a-entity mindar-image-target="targetIndex: 14" id="target12">
         <a-plane
           class="clickable"
           material="src: #Video12; transparent: true"
@@ -165,7 +173,7 @@
         </a-plane>
       </a-entity>
 
-      <a-entity mindar-image-target="targetIndex: 14" id="target13">
+      <a-entity mindar-image-target="targetIndex: 15" id="target13">
         <a-plane
           class="clickable"
           material="src: #Video13; transparent: true"
@@ -174,7 +182,7 @@
         </a-plane>
       </a-entity>
 
-      <a-entity mindar-image-target="targetIndex: 15" id="target14">
+      <a-entity mindar-image-target="targetIndex: 16" id="target14">
         <a-plane
           class="clickable"
           material="src: #Video14; transparent: true"
@@ -184,7 +192,7 @@
       </a-entity>
 
 
-      <a-entity mindar-image-target="targetIndex: 16" id="target15">
+      <a-entity mindar-image-target="targetIndex: 17" id="target15">
         <a-plane
           class="clickable"
           material="src: #Video15; transparent: true"
@@ -194,7 +202,7 @@
       </a-entity>
 
 
-      <a-entity mindar-image-target="targetIndex: 17" id="target16">
+      <a-entity mindar-image-target="targetIndex: 18" id="target16">
         <a-plane
           class="clickable"
           material="src: #Video16; transparent: true"

@@ -16,7 +16,8 @@
       device-orientation-permission-ui="enabled: false"
     >
       <a-assets>
-        <a-asset-item id="Bunny" src="./Gltf/Plant1.gltf"></a-asset-item>
+        <a-asset-item id="plant" src="./Gltf/Plant1.gltf"></a-asset-item>
+        <a-asset-item id="Skeleton" src="./Gltf/skeleton.gltf"></a-asset-item>
         <video id="Video1" src="./Video/CHAP1.mp4" preload loop></video>
         <video id="Video2" src="./Video/CHAP2.mp4" preload loop></video>
         <video id="Video3" src="./Video/CHAP3.mp4" preload loop></video>
@@ -47,7 +48,7 @@
       </a-entity>
 
       <a-entity mindar-image-target="targetIndex: 1">
-        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#Bunny"
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#plant"
         animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
 
@@ -112,6 +113,12 @@
           video-controller
         >
         </a-plane>
+      </a-entity>
+
+
+      <a-entity mindar-image-target="targetIndex: 17">
+        <a-gltf-model rotation="0 0 0 " position="0 0 0.1" scale="1 1 1" src="#Skeleton"
+        animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate">
       </a-entity>
 
       <a-entity mindar-image-target="targetIndex: 9" id="target9">

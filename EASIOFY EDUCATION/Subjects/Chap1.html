@@ -191,10 +191,21 @@
     <script>
       function showContent(contentId) {
         var contents = document.getElementsByClassName("chapter");
+
+        var sidebar = document.querySelector(".sidebar");
+        var sidebarToggle = document.getElementById("sidebar-toggle");
+        var sidebarIcon = document.getElementById("sidebar-icon");
+
         for (var i = 0; i < contents.length; i++) {
           contents[i].classList.remove("active");
         }
         document.getElementById(contentId).classList.add("active");
+
+        console.log(sidebarToggle);
+        sidebar.style.display = "none";
+        content.style.marginLeft = "0";
+        sidebarToggle.setAttribute("aria-expanded", "false");
+        sidebarIcon.classList.replace("fa-times", "fa-bars");
       }
     </script>
   </head>

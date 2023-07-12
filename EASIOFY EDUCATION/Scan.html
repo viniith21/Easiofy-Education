@@ -213,72 +213,65 @@
 
     </a-scene>
     <script>
-  AFRAME.registerComponent("video-controller", {
-  init: function () {
-    const targets = [
-      document.getElementById("target1"),
-      document.getElementById("target2"),
-      document.getElementById("target3"),
-      document.getElementById("target4"),
-      document.getElementById("target5"),
-      document.getElementById("target6"),
-      document.getElementById("target7"),
-      document.getElementById("target8"),
-      document.getElementById("target9"),
-      document.getElementById("target10"),
-      document.getElementById("target11"),
-      document.getElementById("target12"),
-      document.getElementById("target13"),
-      document.getElementById("target14"),
-      document.getElementById("target15"),
-      document.getElementById("target16"),
-    ];
-    const videoIds = [
-      "Video1",
-      "Video2",
-      "Video3",
-      "Video4",
-      "Video5",
-      "Video6",
-      "Video7",
-      "Video8",
-      "Video9",
-      "Video10",
-      "Video11",
-      "Video12",
-      "Video13",
-      "Video14",
-      "Video15",
-      "Video16",
-    ];
-    videoIds.forEach((id, index) => {
-      const video = document.getElementById(id);
-      const plane = targets[index].querySelector("a-plane"); // Get the plane element
-
-      // Detect target found
-      targets[index].addEventListener("targetFound", (event) => {
-        video.play();
-        plane.setAttribute("visible", true); // Show the plane element
+      AFRAME.registerComponent("video-controller", {
+        init: function () {
+          const targets = [
+            document.getElementById("target1"),
+            document.getElementById("target2"),
+            document.getElementById("target3"),
+            document.getElementById("target4"),
+            document.getElementById("target5"),
+            document.getElementById("target6"),
+            document.getElementById("target7"),
+            document.getElementById("target8"),
+            document.getElementById("target9"),
+            document.getElementById("target10"),
+            document.getElementById("target11"),
+            document.getElementById("target12"),
+            document.getElementById("target13"),
+            document.getElementById("target14"),
+            document.getElementById("target15"),
+            document.getElementById("target16"),
+          ];
+          const videoIds = [
+            "Video1",
+            "Video2",
+            "Video3",
+            "Video4",
+            "Video5",
+            "Video6",
+            "Video7",
+            "Video8",
+            "Video9",
+            "Video10",
+            "Video11",
+            "Video12",
+            "Video13",
+            "Video14",
+            "Video15",
+            "Video16",
+          ];
+    
+          videoIds.forEach((id, index) => {
+            const video = document.getElementById(id);
+    
+            
+            targets[index].addEventListener("targetFound", (event) => {
+              video.play();
+    
+            
+              const videoUrl = video.currentSrc;
+              const newTab = window.open(videoUrl, "_blank");
+            });
+    
+          
+            targets[index].addEventListener("targetLost", (event) => {
+              video.pause();
+            });
+          });
+        },
       });
-
-      // Detect target lost
-      targets[index].addEventListener("targetLost", (event) => {
-        video.play();
-        plane.setAttribute("visible", true); // Show the plane element
-        plane.components.material.material.transparent = false; // Make the plane opaque
-        plane.components.material.material.opacity = 1; // Set the plane opacity to 1
-        plane.emit("click"); // Emit a "click" event to trigger any click-related functionality on the plane
-      });
-
-      window.addEventListener("load", (event) => {
-        video.pause();
-        plane.setAttribute("visible", false); // Hide the plane element initially
-      });
-    });
-  },
-});
-
-
     </script>
+    
   </body>
 </html>

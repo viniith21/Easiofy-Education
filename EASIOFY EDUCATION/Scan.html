@@ -254,22 +254,20 @@
     
           videoIds.forEach((id, index) => {
             const video = document.getElementById(id);
-    
-            
+
             targets[index].addEventListener("targetFound", (event) => {
-              video.play();
-    
-            
               const videoUrl = video.currentSrc;
               const newTab = window.open(videoUrl, "_blank");
             });
-    
-          
-            targets[index].addEventListener("targetLost", (event) => {
-              video.pause();
-            });
           });
         },
+      });
+
+      // Wait for the assets to load before initializing the video controller
+      document.querySelector("a-assets").addEventListener("loaded", function () {
+        document.querySelectorAll(".clickable").forEach((element) => {
+          element.setAttribute("video-controller", "");
+        });
       });
     </script>
     

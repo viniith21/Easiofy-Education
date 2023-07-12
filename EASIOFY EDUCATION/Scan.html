@@ -254,27 +254,41 @@
     
           let videoWindow = null; // Track the opened video window
 
-videoIds.forEach((id, index) => {
-  const video = document.getElementById(id);
+          function openVideoWindow(videoUrl) {
+            videoWindow = window.open(videoUrl, "_blank");
+          }
 
-  targets[index].addEventListener("targetFound", (event) => {
-    const videoUrl = video.currentSrc;
-    if (!videoWindow || videoWindow.closed) {
-      videoWindow = window.open(videoUrl, "_blank");
-    } else {
-      videoWindow.location.href = videoUrl;
-    }
-  });
-});
-},
-});
+          videoIds.forEach((id, index) => {
+            const video = document.getElementById(id);
 
-// Wait for the assets to load before initializing the video controller
-document.querySelector("a-assets").addEventListener("loaded", function () {
-document.querySelectorAll(".clickable").forEach((element) => {
-element.setAttribute("video-controller", "");
-});
-});
+            targets[index].addEventListener("targetFound", (event) => {
+              const videoUrl = video.currentSrc;
+              if (!videoWindow || videoWindow.closed) {
+                openVideoWindow(videoUrl);
+              } else {
+                videoWindow.location.href = "about:blank";
+                setTimeout(() => {
+                  openVideoWindow(videoUrl);
+                }, 100);
+              }
+            });
+
+            targets[index].addEventListener("targetLost", (event) => {
+              if (videoWindow && !videoWindow.closed) {
+                videoWindow.close();
+                videoWindow = null;
+              }
+            });
+          });
+        },
+      });
+
+      // Wait for the assets to load before initializing the video controller
+      document.querySelector("a-assets").addEventListener("loaded", function () {
+        document.querySelectorAll(".clickable").forEach((element) => {
+          element.setAttribute("video-controller", "");
+        });
+      });
     </script>
     
   </body>

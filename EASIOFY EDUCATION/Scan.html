@@ -251,23 +251,28 @@
       "Video15",
       "Video16",
     ];
-
     videoIds.forEach((id, index) => {
       const video = document.getElementById(id);
+      const plane = targets[index].querySelector("a-plane"); // Get the plane element
 
-      // detect target found
+      // Detect target found
       targets[index].addEventListener("targetFound", (event) => {
         video.play();
+        plane.setAttribute("visible", true); // Show the plane element
       });
 
-      // detect target lost
+      // Detect target lost
       targets[index].addEventListener("targetLost", (event) => {
         video.play();
+        plane.setAttribute("visible", true); // Show the plane element
+        plane.components.material.material.transparent = false; // Make the plane opaque
+        plane.components.material.material.opacity = 1; // Set the plane opacity to 1
+        plane.emit("click"); // Emit a "click" event to trigger any click-related functionality on the plane
       });
 
-      // window onload event
       window.addEventListener("load", (event) => {
         video.pause();
+        plane.setAttribute("visible", false); // Hide the plane element initially
       });
     });
   },

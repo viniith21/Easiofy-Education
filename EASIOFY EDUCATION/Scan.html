@@ -262,8 +262,12 @@
 
       // detect target lost
       targets[index].addEventListener("targetLost", (event) => {
+        video.play();
+       
+      });
+
+      targets[index].addEventListener("window.onload",(event)=>{
         video.pause();
-        video.style.display = "block"; // Make the video visible
       });
     });
   },

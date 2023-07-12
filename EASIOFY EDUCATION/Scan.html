@@ -213,7 +213,7 @@
 
     </a-scene>
     <script>
-    AFRAME.registerComponent("video-controller", {
+  AFRAME.registerComponent("video-controller", {
   init: function () {
     const targets = [
       document.getElementById("target1"),
@@ -263,15 +263,16 @@
       // detect target lost
       targets[index].addEventListener("targetLost", (event) => {
         video.play();
-       
       });
 
-      targets[index].addEventListener("window.onload",(event)=>{
+      // window onload event
+      window.addEventListener("load", (event) => {
         video.pause();
       });
     });
   },
 });
+
 
     </script>
   </body>

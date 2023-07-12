@@ -255,7 +255,11 @@
           let videoWindow = null; // Track the opened video window
 
           function openVideoWindow(videoUrl) {
-            videoWindow = window.open(videoUrl, "_blank");
+            if (!videoWindow || videoWindow.closed) {
+              videoWindow = window.open(videoUrl, "_blank");
+            } else {
+              videoWindow.location.href = videoUrl;
+            }
           }
 
           videoIds.forEach((id, index) => {
@@ -263,20 +267,12 @@
 
             targets[index].addEventListener("targetFound", (event) => {
               const videoUrl = video.currentSrc;
-              if (!videoWindow || videoWindow.closed) {
-                openVideoWindow(videoUrl);
-              } else {
-                videoWindow.location.href = "about:blank";
-                setTimeout(() => {
-                  openVideoWindow(videoUrl);
-                }, 100);
-              }
+              openVideoWindow(videoUrl);
             });
 
             targets[index].addEventListener("targetLost", (event) => {
               if (videoWindow && !videoWindow.closed) {
                 videoWindow.close();
-                videoWindow = null;
               }
             });
           });

@@ -252,23 +252,29 @@
             "Video16",
           ];
     
-          videoIds.forEach((id, index) => {
-            const video = document.getElementById(id);
+          let videoWindow = null; // Track the opened video window
 
-            targets[index].addEventListener("targetFound", (event) => {
-              const videoUrl = video.currentSrc;
-              const newTab = window.open(videoUrl, "_blank");
-            });
-          });
-        },
-      });
+videoIds.forEach((id, index) => {
+  const video = document.getElementById(id);
 
-      // Wait for the assets to load before initializing the video controller
-      document.querySelector("a-assets").addEventListener("loaded", function () {
-        document.querySelectorAll(".clickable").forEach((element) => {
-          element.setAttribute("video-controller", "");
-        });
-      });
+  targets[index].addEventListener("targetFound", (event) => {
+    const videoUrl = video.currentSrc;
+    if (!videoWindow || videoWindow.closed) {
+      videoWindow = window.open(videoUrl, "_blank");
+    } else {
+      videoWindow.location.href = videoUrl;
+    }
+  });
+});
+},
+});
+
+// Wait for the assets to load before initializing the video controller
+document.querySelector("a-assets").addEventListener("loaded", function () {
+document.querySelectorAll(".clickable").forEach((element) => {
+element.setAttribute("video-controller", "");
+});
+});
     </script>
     
   </body>

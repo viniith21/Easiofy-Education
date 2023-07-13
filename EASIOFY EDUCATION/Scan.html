@@ -255,42 +255,34 @@
           let videoWindow = null; // Track the opened video window
 
 function openVideoWindow(videoUrl) {
-  // Close any existing video windows if more than one is open
-  if (window.openedVideoWindowCount > 1) {
-    if (videoWindow && !videoWindow.closed) {
-      videoWindow.close();
-    }
-    window.openedVideoWindowCount--;
+  // Close any existing video window if it is open
+  if (videoWindow && !videoWindow.closed) {
+    videoWindow.close();
   }
 
-  if (!videoWindow || videoWindow.closed) {
-    videoWindow = window.open(videoUrl, "_blank");
-    window.openedVideoWindowCount++;
-  } else {
-    videoWindow.location.href = videoUrl;
+  videoWindow = window.open(videoUrl, "_blank");
+}
+
+function closeVideoWindow() {
+  if (videoWindow && !videoWindow.closed) {
+    videoWindow.close();
   }
 }
 
-videoIds.forEach((id, index) => {
-  const video = document.getElementById(id);
+targets.forEach((target, index) => {
+  const video = document.getElementById(videoIds[index]);
 
-  targets[index].addEventListener("targetFound", (event) => {
+  target.addEventListener("targetFound", (event) => {
     const videoUrl = video.currentSrc;
     openVideoWindow(videoUrl);
   });
 
-  targets[index].addEventListener("targetLost", (event) => {
-    if (videoWindow && !videoWindow.closed) {
-      videoWindow.close();
-      window.openedVideoWindowCount--;
-    }
+  target.addEventListener("targetLost", (event) => {
+    closeVideoWindow();
   });
 });
 },
 });
-
-// Initialize the opened video window count
-window.openedVideoWindowCount = 0;
 
 // Wait for the assets to load before initializing the video controller
 document.querySelector("a-assets").addEventListener("loaded", function () {

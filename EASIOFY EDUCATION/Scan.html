@@ -256,14 +256,16 @@
 
 function openVideoWindow(videoUrl) {
   // Close any existing video windows if more than one is open
-  if (videoWindow && !videoWindow.closed && window.openedVideoWindowCount > 1) {
-    videoWindow.close();
+  if (window.openedVideoWindowCount > 1) {
+    if (videoWindow && !videoWindow.closed) {
+      videoWindow.close();
+    }
     window.openedVideoWindowCount--;
   }
 
   if (!videoWindow || videoWindow.closed) {
     videoWindow = window.open(videoUrl, "_blank");
-    window.openedVideoWindowCount = 1;
+    window.openedVideoWindowCount++;
   } else {
     videoWindow.location.href = videoUrl;
   }
@@ -286,6 +288,9 @@ videoIds.forEach((id, index) => {
 });
 },
 });
+
+// Initialize the opened video window count
+window.openedVideoWindowCount = 0;
 
 // Wait for the assets to load before initializing the video controller
 document.querySelector("a-assets").addEventListener("loaded", function () {

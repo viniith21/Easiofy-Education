@@ -251,53 +251,37 @@
             "Video15",
             "Video16",
           ];
-          let videoWindow = null; // Track the opened video window
+    
+          let currentVideo = null;
 
-function openVideoWindow(videoUrl) {
-  if (!videoWindow || videoWindow.closed) {
-    videoWindow = window.open("", "_blank");
-  }
+videoIds.forEach((id, index) => {
+  const video = document.getElementById(id);
 
-  const videoElement = document.createElement("video");
-  videoElement.src = videoUrl;
-  videoElement.controls = true;
-  videoElement.autoplay = true;
-  videoElement.style.width = "100%";
-  videoElement.style.height = "100%";
-
-  videoWindow.document.body.innerHTML = "";
-  videoWindow.document.body.appendChild(videoElement);
-}
-
-function closeVideoWindow() {
-  if (videoWindow && !videoWindow.closed) {
-    videoWindow.close();
-  }
-}
-
-targets.forEach((target, index) => {
-  const video = document.getElementById(videoIds[index]);
-
-  target.addEventListener("targetFound", (event) => {
-    const videoUrl = video.currentSrc;
-    openVideoWindow(videoUrl);
+  targets[index].addEventListener("targetFound", (event) => {
+    video.play();
+    currentVideo = video;
   });
 
-  target.addEventListener("targetLost", (event) => {
-    closeVideoWindow();
+  targets[index].addEventListener("targetLost", (event) => {
+    video.pause();
+    currentVideo = null;
+  });
+
+  targets[index].addEventListener("click", (event) => {
+    if (currentVideo && currentVideo !== video) {
+      currentVideo.pause();
+    }
+    window.open(video.currentSrc, "_blank");
   });
 });
 },
 });
-
-// Wait for the assets to load before initializing the video controller
-document.querySelector("a-assets").addEventListener("loaded", function () {
-document.querySelectorAll(".clickable").forEach((element) => {
-element.setAttribute("video-controller", "");
-});
-});
-     
-
+      // Wait for the assets to load before initializing the video controller
+      document.querySelector("a-assets").addEventListener("loaded", function () {
+        document.querySelectorAll(".clickable").forEach((element) => {
+          element.setAttribute("video-controller", "");
+        });
+      });
     </script>
     
   </body>
